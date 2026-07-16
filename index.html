@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#080706">
+  <meta name="description" content="Dungeon crawler procedural 3D para navegador con personajes 2D.">
+  <title>Endless Dungeon</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <section id="start-screen" class="overlay visible">
+    <div class="panel">
+      <p class="eyebrow">PROTOTIPO WEB · V0.2</p>
+      <h1>ENDLESS<br>DUNGEON</h1>
+      <p>Mazmorras procedurales por sectores. Explora pasillos, encuentra el portal y desciende.</p>
+      <label>SEMILLA
+        <input id="seed-input" maxlength="40" value="dungeon-001" autocomplete="off">
+      </label>
+      <button id="start-button" type="button">ENTRAR</button>
+      <p id="boot-status" class="status">Motor preparado.</p>
+      <small>WASD o flechas · Cámara Q/E · Controles táctiles en móvil</small>
+    </div>
+  </section>
+
+  <section id="fatal-screen" class="overlay" hidden>
+    <div class="panel error-panel">
+      <p class="eyebrow">ERROR DEL MOTOR</p>
+      <h2>No se pudo iniciar</h2>
+      <pre id="fatal-message"></pre>
+      <button id="reload-button" type="button">RECARGAR</button>
+    </div>
+  </section>
+
+  <header id="hud" hidden>
+    <div><span>PISO</span><strong id="floor-value">1</strong></div>
+    <div><span>SECTOR</span><strong id="sector-value">0, 0</strong></div>
+    <div><span>SEMILLA</span><strong id="seed-value">—</strong></div>
+    <button id="new-map-button" type="button">NUEVA</button>
+  </header>
+
+  <div id="message"></div>
+  <canvas id="minimap" width="180" height="180"></canvas>
+
+  <div id="touch-controls">
+    <div class="dpad">
+      <button data-key="forward">▲</button>
+      <button data-key="left">◀</button>
+      <button data-key="back">▼</button>
+      <button data-key="right">▶</button>
+    </div>
+    <div class="camera-controls">
+      <button data-key="turnLeft">↶</button>
+      <button data-key="turnRight">↷</button>
+    </div>
+  </div>
+
+  <script src="./js/vendor/three.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
